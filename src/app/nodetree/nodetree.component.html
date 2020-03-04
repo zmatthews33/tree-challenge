@@ -1,0 +1,15 @@
+<input type="text" class= "node-input" placeholder ="Enter a Name" [(ngModel)]="nodeName" 
+(keyup.enter)="addNode()">
+
+<div class="row node" *ngFor="let node of nodes">
+    <div class="node-name">
+           > {{ node.name }}
+    </div>
+    <div class="node-range">
+            {{ node.range }}
+    </div>
+    <div class="remove-node" (click)="deleteNode(node.name)">
+        &times;
+    </div>
+</div>
+ 
