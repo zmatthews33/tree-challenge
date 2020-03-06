@@ -1,15 +1,36 @@
-<input type="text" class= "node-input" placeholder ="Enter a Name" [(ngModel)]="nodeName" 
-(keyup.enter)="addNode()">
+<div class="container">
 
-<div class="row node" *ngFor="let node of nodes">
-    <div class="node-name">
-           > {{ node.name }}
+    <div class= "input-div">
+        <input type="text" class= "node-input" placeholder ="Enter a Name" [(ngModel)]="nodeName" 
+        (keyup.enter)="addNode()">
+        <input type="text" class= "node-input" placeholder ="Number of Children" [(ngModel)]="nodeChildren" 
+        (keyup.enter)="addNode()">
+        <input type="text" class= "node-input" placeholder ="Range Minimum" [(ngModel)]="nodeRangeMin" 
+        (keyup.enter)="addNode()">
+        <input type="text" class= "node-input" placeholder ="Range Maximum" [(ngModel)]="nodeRangeMax" 
+        (keyup.enter)="addNode()">
     </div>
-    <div class="node-range">
-            {{ node.range }}
+  
+
+    <div class="col-9 text-center">
+        <ul *ngIf="nodes">
+            <li class="row node" *ngFor="let node of nodes">
+            
+                <span  *ngIf="!node.editing; else editingNode" class="node-name" (dblclick)="editNode(node)">
+                    > {{ node.name }}
+                </span> 
+                <ng-template #editingNode>
+                <input type="text" class= "node-edit" [(ngModel)]="node.name" (blur)="editDone(node)" (keyup.enter)="editDone(node)" autofocus>
+                </ng-template>
+                <span class="node-range">
+                        {{ node.rangeMin }}-{{ node.rangeMax }}
+                </span>
+                <div class="remove-node" (click)="deleteNode(node.name)">
+                    &times;
+                </div>
+            </li>
+        </ul>
     </div>
-    <div class="remove-node" (click)="deleteNode(node.name)">
-        &times;
-    </div>
+
 </div>
  

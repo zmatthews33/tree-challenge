@@ -11,12 +11,12 @@ import { NodetreeComponent } from './nodetree/nodetree.component';
   declarations: [
     AppComponent,
     NodetreeComponent,
-
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule, 
+   
   ],
   providers: [],
   bootstrap: [AppComponent]
